@@ -205,6 +205,13 @@
 
 <body class="bg-rose-50 flex flex-col items-center min-h-screen p-4 font-sans text-rose-800">
 
+    <!-- Contador de dias juntos -->
+    <div class="mt-6 text-2xl font-bold text-rose-700">
+        Estamos juntos há <span id="daysTogether">0</span> dias ❤️
+    </div>
+
+
+
     <!-- Container para o céu estrelado e o gradiente noturno -->
     <div class="stars-container" id="stars-container"></div>
 
@@ -423,6 +430,29 @@
             document.body.innerHTML = "<h2>ACESSO NEGADO</h2>";
         }
 
+        // Função para atualizar o contador de dias juntos
+        function updateDaysTogether() {
+            // Data do início do relacionamento
+            const startDate = new Date("2023-08-15T15:15:00");
+
+            // Data atual
+            const today = new Date();
+
+            // Diferença entre hoje e a data de início em milissegundos
+            const diffTime = today - startDate;
+
+            // Converte a diferença para dias (1 dia = 1000ms * 60s * 60min * 24h)
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            // Atualiza o conteúdo do span com o número de dias
+            document.getElementById("daysTogether").textContent = diffDays;
+        }
+
+        // Atualiza imediatamente quando a página carrega
+        updateDaysTogether();
+
+        // Atualiza a cada hora, para manter o contador sempre correto
+        setInterval(updateDaysTogether, 1000 * 60 * 60);
 
 
     </script>
