@@ -6,201 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para o Amor da Minha Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
-
-        /* Estilos do céu estrelado e do gradiente noturno */
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 2s infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-
-            0%,
-            100% {
-                opacity: 0.2;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        .stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(to bottom, #2c2e5c, #6a4c7a, #d86ca4);
-        }
-
-
-        body {
-            /* Fundo com gradiente suave do azul noturno para o rosa */
-            background: linear-gradient(to bottom, #0a0a2a 0%, #0a0a2a 30%, #fef2f6 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 1rem;
-            font-family: sans-serif;
-            color: #4a5568;
-        }
-
-        /* Container para as estrelas */
-        .stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            z-index: -2;
-        }
-
-        /* Estrelas com animação */
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(1px 1px at 50px 100px, #fff, transparent),
-                radial-gradient(1px 1px at 200px 300px, #fff, transparent),
-                radial-gradient(1px 1px at 350px 50px, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 100px 250px, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 400px 450px, #fff, transparent),
-                radial-gradient(2px 2px at 150px 400px, #fff, transparent),
-                radial-gradient(2px 2px at 300px 150px, #fff, transparent);
-            background-size: 500px 500px;
-            animation: moveStars 20s linear infinite;
-        }
-
-        @keyframes moveStars {
-            from {
-                background-position: 0 0;
-            }
-
-            to {
-                background-position: 500px 500px;
-            }
-        }
-
-        .heart-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .heart {
-            position: absolute;
-            bottom: -50px;
-            font-size: 2rem;
-            color: #ec4899;
-            animation: floatUp 10s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
-
-        .timeline-line-vertical {
-            background-color: #fca5a5;
-            width: 2px;
-            height: calc(100% - 2rem);
-            position: absolute;
-            left: 50%;
-            top: 1rem;
-            transform: translateX(-50%);
-        }
-
-        .timeline-point {
-            background-color: #ec4899;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
-
-        #albumModal .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            overflow-y: auto;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-item:nth-child(odd) {
-                justify-content: flex-end;
-                text-align: right;
-            }
-
-            .timeline-item:nth-child(even) {
-                justify-content: flex-start;
-                text-align: left;
-            }
-
-            .timeline-item-content {
-                padding: 1.5rem;
-            }
-        }
-    </style>
-    <!-- Chosen Palette: Blush & Rose -->
-    <!-- Application Structure Plan: The single-page application is now fully responsive. The main content section is centrally aligned. A fixed-position button triggers a modal for a special surprise. The timeline is a key narrative element, now robustly designed with a vertical line and alternating content blocks that are correctly spaced to prevent any overlap on all devices. The animated hearts have been brought back, adding a unique, personal touch to the background. A new "photo album" modal provides an interactive gallery of images. A new starry background effect has been added to the top of the page. -->
-    <!-- Visualization & Content Choices: The core narrative is delivered via text, a clickable hidden message, and a new photo gallery. The timeline is built with a CSS-based vertical line and containers for each event, ensuring the points and text do not overlap. The background animation uses JavaScript to create and animate individual hearts. The photo album is a simple modal with a responsive grid of images, providing a visual narrative. A new starry night effect is achieved using CSS gradients and animations, providing a beautiful visual backdrop. All graphics are text-based or CSS-based, except for the placeholder images; no SVG or Mermaid JS is used. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-rose-50 flex flex-col items-center min-h-screen p-4 font-sans text-rose-800">
@@ -210,7 +16,11 @@
         Estamos juntos há <span id="daysTogether">0</span> dias ❤️
     </div>
 
-
+    <!-- Mensagem diária do amor -->
+    <div class="mt-4 max-w-lg mx-auto bg-rose-200 p-4 rounded-lg shadow-md text-center relative z-10">
+        <p class="text-sm font-semibold text-rose-600 mb-2">💕 Mensagem do Dia 💕</p>
+        <p id="dailyMessage" class="text-base text-rose-800 font-medium italic">Carregando mensagem...</p>
+    </div>
 
     <!-- Container para o céu estrelado e o gradiente noturno -->
     <div class="stars-container" id="stars-container"></div>
@@ -221,16 +31,51 @@
     <!-- Container para a animação de corações flutuantes -->
     <div id="heart-container" class="heart-container"></div>
 
+    <!-- Modal de Senha -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content text-center max-w-md mx-auto">
+            <h2 class="text-2xl font-bold font-[Dancing Script] mb-4 text-rose-600">🔒 Acesso Restrito</h2>
+            <p class="text-rose-700 mb-6">Este é um lugar especial. Digite a senha para continuar:</p>
+            <input type="password" id="passwordInput" 
+                class="w-full p-3 border-2 border-rose-300 rounded-lg mb-4 text-center text-lg focus:border-rose-500 focus:outline-none" 
+                placeholder="Digite a senha" maxlength="10">
+            <div class="flex gap-3 justify-center">
+                <button id="submitPassword" 
+                    class="bg-rose-600 hover:bg-rose-500 text-white font-semibold py-2 px-6 rounded-full transition duration-300">
+                    Entrar ❤️
+                </button>
+            </div>
+            <p id="passwordError" class="text-red-500 text-sm mt-3 hidden">Senha incorreta! Tente novamente.</p>
+        </div>
+    </div>
+
+    <!-- Tela de Acesso Negado -->
+    <div id="accessDenied" class="hidden fixed inset-0 bg-gradient-to-br from-red-900 via-red-700 to-rose-600 flex items-center justify-center z-50">
+        <div class="text-center text-white p-8">
+            <div class="text-8xl mb-6">🚫</div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-pulse">ACESSO NEGADO</h1>
+            <p class="text-xl md:text-2xl mb-6">Este conteúdo é privado e exclusivo!</p>
+            <div class="text-lg mb-8">
+                <p>🔐 Você não tem permissão para acessar</p>
+                <p>💔 Apenas pessoas especiais podem entrar</p>
+            </div>
+            <button id="tryAgainBtn" 
+                class="bg-white text-red-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                Tentar Novamente
+            </button>
+        </div>
+    </div>
+
     <!-- Modal com a arte ASCII do coração secreto -->
     <div id="surpriseModal" class="modal hidden">
         <div class="modal-content text-center">
             <pre class="text-sm md:text-base lg:text-lg text-rose-600 font-mono">
    VOCÊ É MUUUUUITO CURIOSA, NÉ NÃO ?
    RUMMMM
-   Falta eu colocar a função :3
+   Falta eu colocar a função >:/
             </pre>
             <button id="closeModal"
-                class="mt-4 bg-rose-300 hover:bg-rose-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md">
+                class="mt-4 bg-rose-500 hover:bg-rose-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md">
                 Fechar
             </button>
         </div>
@@ -310,13 +155,31 @@
 
     <!-- Botão secreto "Não abra" -->
     <button id="secretButton"
-        class="fixed bottom-4 left-4 z-40 bg-rose-300 hover:bg-rose-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
+        class="fixed bottom-4 left-4 z-40 bg-rose-600 hover:bg-rose-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
         Não abra
     </button>
 
+    <!-- Botão de alternancia de modo -->
+    <button id="themeToggle"
+        class="fixed top-4 right-4 z-40 bg-orange-500 hover:bg-orange-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
+        🌅 Nascer do Sol
+    </button>
+
+
+
+    <!-- Container para folhas caindo -->
+    <div id="leaves-container" class="heart-container hidden"></div>
+
+    <!-- Cenário do nascer/pôr do sol -->
+    <div id="sunrise-landscape" class="hidden fixed inset-0" style="z-index: -3;">
+        <div class="sun" id="sun"></div>
+        <div class="mountains"></div>
+        <div class="hills"></div>
+    </div>
+
     <!-- Linha do tempo da jornada do casal -->
     <section id="timeline-section" class="w-full px-4 py-12">
-        <h2 class="text-center text-3xl font-bold font-[Dancing Script] mb-10 text-rose-600">Nossa Jornada</h2>
+        <h2 class="text-center text-3xl font-bold font-[Dancing Script] mb-10 text-white drop-shadow-lg">Nossa Jornada</h2>
         <div class="relative w-full max-w-2xl mx-auto flex flex-col items-center">
             <div class="timeline-line-vertical"></div>
 
@@ -376,86 +239,7 @@
         </div>
     </section>
 
-    <script>
-        document.getElementById('secretButton').addEventListener('click', function () {
-            document.getElementById('surpriseModal').classList.remove('hidden');
-        });
-
-        document.getElementById('closeModal').addEventListener('click', function () {
-            document.getElementById('surpriseModal').classList.add('hidden');
-        });
-
-        document.getElementById('revealButton').addEventListener('click', function () {
-            document.getElementById('hiddenMessage').classList.remove('hidden');
-            this.style.display = 'none';
-        });
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.textContent = '♥';
-            heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.animationDuration = `${Math.random() * 2 + 8}s`;
-            document.getElementById('heart-container').appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 10000);
-        }
-
-        setInterval(createHeart, 250);
-
-        document.getElementById('openAlbumButton').addEventListener('click', function () {
-            document.getElementById('albumModal').classList.remove('hidden');
-        });
-
-        document.getElementById('closeAlbum').addEventListener('click', function () {
-            document.getElementById('albumModal').classList.add('hidden');
-        });
-        // Criar estrelas piscando dinamicamente
-        const starsContainer = document.getElementById("stars-container");
-        const numStars = 150; // quantidade de estrelas
-
-        for (let i = 0; i < numStars; i++) {
-            let star = document.createElement("div");
-            star.className = "star";
-            star.style.top = Math.random() * 100 + "vh";
-            star.style.left = Math.random() * 100 + "vw";
-            star.style.animationDuration = (Math.random() * 3 + 2) + "s"; // cada estrela pisca em tempos diferentes
-            starsContainer.appendChild(star);
-        }
-
-        //SENHA
-        let senha = prompt("Digite a senha:");
-        if (senha !== "1234") {
-            document.body.innerHTML = "<h2>ACESSO NEGADO</h2>";
-        }
-
-        // Função para atualizar o contador de dias juntos
-        function updateDaysTogether() {
-            // Data do início do relacionamento
-            const startDate = new Date("2023-08-15T15:15:00");
-
-            // Data atual
-            const today = new Date();
-
-            // Diferença entre hoje e a data de início em milissegundos
-            const diffTime = today - startDate;
-
-            // Converte a diferença para dias (1 dia = 1000ms * 60s * 60min * 24h)
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-            // Atualiza o conteúdo do span com o número de dias
-            document.getElementById("daysTogether").textContent = diffDays;
-        }
-
-        // Atualiza imediatamente quando a página carrega
-        updateDaysTogether();
-
-        // Atualiza a cada hora, para manter o contador sempre correto
-        setInterval(updateDaysTogether, 1000 * 60 * 60);
-
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Satisfy&display=swap');
+
+/* Estilos do céu estrelado e do gradiente noturno */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.star:nth-child(odd) {
+    width: 2px;
+    height: 2px;
+    animation-duration: 2s;
+}
+
+.star:nth-child(even) {
+    width: 3px;
+    height: 3px;
+    animation-duration: 4s;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(44, 46, 92, 0.8), rgba(106, 76, 122, 0.6), rgba(216, 108, 164, 0.4));
+    backdrop-filter: blur(1px);
+}
+
+body {
+    /* Fundo com gradiente suave e romântico */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #2d3748;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Container para as estrelas */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2;
+}
+
+/* Estrelas com animação */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(1px 1px at 50px 100px, #fff, transparent),
+        radial-gradient(1px 1px at 200px 300px, #fff, transparent),
+        radial-gradient(1px 1px at 350px 50px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 100px 250px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 400px 450px, #fff, transparent),
+        radial-gradient(2px 2px at 150px 400px, #fff, transparent),
+        radial-gradient(2px 2px at 300px 150px, #fff, transparent);
+    background-size: 500px 500px;
+    animation: moveStars 20s linear infinite;
+}
+
+@keyframes moveStars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 500px 500px;
+    }
+}
+
+.heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 2rem;
+    animation: floatUp 12s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.6));
+}
+
+.heart:nth-child(odd) {
+    color: #ec4899;
+    font-size: 1.8rem;
+}
+
+.heart:nth-child(even) {
+    color: #f472b6;
+    font-size: 2.2rem;
+}
+
+.heart:nth-child(3n) {
+    color: #be185d;
+    font-size: 1.5rem;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.timeline-line-vertical {
+    background-color: #fca5a5;
+    width: 2px;
+    height: calc(100% - 2rem);
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    transform: translateX(-50%);
+}
+
+.timeline-point {
+    background-color: #ffffff;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#albumModal .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+/* Modo Nascer do Sol */
+.sunrise-mode {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #ff9a9e 75%, #fad0c4 100%) !important;
+    background-size: 400% 400%;
+    animation: sunriseGradient 20s ease infinite !important;
+    transition: all 3s ease-in-out;
+}
+
+@keyframes sunriseGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.sunrise-mode .stars-container {
+    background: linear-gradient(135deg, rgba(255, 154, 86, 0.6), rgba(255, 173, 86, 0.4), rgba(255, 201, 71, 0.3)) !important;
+    transition: all 3s ease-in-out;
+}
+
+/* Cenário do nascer/pôr do sol */
+.sun {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #ffeb3b 0%, #ff9800 50%, #ff5722 100%);
+    border-radius: 50%;
+    right: 50px;
+    top: 50px;
+    box-shadow: 0 0 100px rgba(255, 193, 7, 1);
+    animation: sunGlow 4s ease-in-out infinite alternate;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes sunGlow {
+    0% {
+        box-shadow: 0 0 100px rgba(255, 193, 7, 1), 0 0 200px rgba(255, 152, 0, 0.5);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 150px rgba(255, 193, 7, 1), 0 0 300px rgba(255, 152, 0, 0.7);
+        transform: scale(1.15);
+    }
+}
+
+.mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(45deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
+    clip-path: polygon(0 100%, 20% 60%, 40% 80%, 60% 40%, 80% 70%, 100% 50%, 100% 100%);
+}
+
+.hills {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(45deg, #68d391 0%, #48bb78 50%, #38a169 100%);
+    clip-path: polygon(0 100%, 15% 70%, 35% 85%, 55% 60%, 75% 80%, 90% 65%, 100% 75%, 100% 100%);
+}
+
+/* Folhas caindo para baixo */
+.leaf {
+    position: absolute;
+    top: -50px;
+    font-size: 1.5rem;
+    animation: leafFall 10s linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.leaf:nth-child(odd) {
+    animation-duration: 8s;
+    font-size: 1.3rem;
+}
+
+.leaf:nth-child(even) {
+    animation-duration: 12s;
+    font-size: 1.7rem;
+}
+
+@keyframes leafFall {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateY(25vh) rotate(90deg) translateX(20px);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(-10px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) translateX(15px);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(0);
+        opacity: 0;
+    }
+}
+
+/* Partículas flutuantes */
+.particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float 15s infinite linear;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(90vh) translateX(10px) scale(1);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(-10px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Transições suaves */
+body, .stars-container {
+    transition: all 2s ease-in-out;
+}
+
+/* Estilos românticos para botões */
+.romantic-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.romantic-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.romantic-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.romantic-button:hover:before {
+    left: 100%;
+}
+
+/* Glassmorphism para conteúdo principal */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de brilho suave */
+.soft-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Texto com efeito de brilho */
+.glowing-text {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Animação de pulsação suave */
+.gentle-pulse {
+    animation: gentlePulse 3s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+}
+
+@media (min-width: 768px) {
+    .timeline-item:nth-child(odd) {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .timeline-item-content {
+        padding: 1.5rem;
+    }
+}
