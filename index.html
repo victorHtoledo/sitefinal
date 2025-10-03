@@ -4,22 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o Amor da Minha Vida</title>
+    <meta name="description" content="Um site especial dedicado ao amor da minha vida">
+    <meta name="theme-color" content="#ec4899">
+    <title>Para o Amor da Minha Vida ❤️</title>
+    
+    <!-- Preload para melhor performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Configurar Tailwind para modo escuro -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
 <body class="bg-rose-50 flex flex-col items-center min-h-screen p-4 font-sans text-rose-800">
 
     <!-- Contador de dias juntos -->
-    <div class="mt-6 text-2xl font-bold text-rose-700">
-        Estamos juntos há <span id="daysTogether">0</span> dias ❤️
+    <div class="mt-6 text-2xl font-bold text-rose-700 card-glow bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
+        <div class="glowing-text">Estamos juntos há <span id="daysTogether" class="loading-heart">0</span> dias ❤️</div>
+        <div class="text-sm mt-2 opacity-80">E cada dia é mais especial que o anterior</div>
     </div>
 
     <!-- Mensagem diária do amor -->
-    <div class="mt-4 max-w-lg mx-auto bg-rose-200 p-4 rounded-lg shadow-md text-center relative z-10">
-        <p class="text-sm font-semibold text-rose-600 mb-2">💕 Mensagem do Dia 💕</p>
-        <p id="dailyMessage" class="text-base text-rose-800 font-medium italic">Carregando mensagem...</p>
+    <div class="mt-4 max-w-lg mx-auto bg-white/30 backdrop-blur-md p-6 rounded-2xl shadow-xl text-center relative z-10 card-glow border border-white/20">
+        <p class="text-sm font-semibold text-rose-600 mb-3 glowing-text">💕 Mensagem do Dia 💕</p>
+        <p id="dailyMessage" class="text-base text-rose-800 font-medium italic typing-effect">Carregando mensagem...</p>
+        <div class="mt-3 flex justify-center space-x-1">
+            <span class="w-2 h-2 bg-rose-400 rounded-full animate-bounce"></span>
+            <span class="w-2 h-2 bg-rose-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+            <span class="w-2 h-2 bg-rose-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+        </div>
     </div>
 
     <!-- Container para o céu estrelado e o gradiente noturno -->
@@ -145,6 +176,22 @@
         </div>
     </main>
 
+    <!-- Modal do clima -->
+    <div id="weatherModal" class="modal hidden">
+        <div class="modal-content text-center max-w-md">
+            <h2 class="text-2xl font-bold font-[Dancing Script] mb-4 text-rose-600">🌤️ Clima do Amor</h2>
+            <div class="bg-gradient-to-r from-blue-100 to-pink-100 p-6 rounded-lg">
+                <div class="text-4xl mb-2">☀️</div>
+                <p class="text-lg font-semibold text-gray-700">Sempre ensolarado</p>
+                <p class="text-sm text-gray-600 mt-2">Quando estou com você, o clima é sempre perfeito!</p>
+                <div class="mt-4 text-2xl">🌡️ 100% de amor</div>
+            </div>
+            <button id="closeWeatherModal" class="mt-4 bg-blue-500 hover:bg-blue-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md">
+                Fechar
+            </button>
+        </div>
+    </div>
+
     <!-- Botão para abrir o álbum de fotos -->
     <div class="mt-12 w-full max-w-lg mx-auto text-center relative z-10">
         <button id="openAlbumButton"
@@ -153,29 +200,29 @@
         </button>
     </div>
 
+
     <!-- Botão secreto "Não abra" -->
     <button id="secretButton"
         class="fixed bottom-4 left-4 z-40 bg-rose-600 hover:bg-rose-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
         Não abra
     </button>
 
-    <!-- Botão de alternancia de modo -->
-    <button id="themeToggle"
-        class="fixed top-4 right-4 z-40 bg-orange-500 hover:bg-orange-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
-        🌅 Nascer do Sol
+    <!-- Botão clima -->
+    <button id="weatherButton"
+        class="fixed bottom-4 right-4 z-40 bg-blue-500 hover:bg-blue-400 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
+        🌤️ Clima
+    </button>
+
+    <!-- Botão aurora -->
+    <button id="auroraToggle"
+        class="fixed top-4 right-4 z-40 bg-purple-600 hover:bg-purple-500 transition duration-300 ease-in-out text-white font-semibold py-2 px-4 rounded-full shadow-md transform hover:scale-105">
+        🌌 Aurora
     </button>
 
 
 
-    <!-- Container para folhas caindo -->
-    <div id="leaves-container" class="heart-container hidden"></div>
-
-    <!-- Cenário do nascer/pôr do sol -->
-    <div id="sunrise-landscape" class="hidden fixed inset-0" style="z-index: -3;">
-        <div class="sun" id="sun"></div>
-        <div class="mountains"></div>
-        <div class="hills"></div>
-    </div>
+    <!-- Containers para efeitos visuais -->
+    <div id="aurora" class="aurora"></div>
 
     <!-- Linha do tempo da jornada do casal -->
     <section id="timeline-section" class="w-full px-4 py-12">
@@ -239,7 +286,9 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+
+
+    <script src="script-simple.js"></script>
 </body>
 
 </html>
